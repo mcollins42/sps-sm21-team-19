@@ -153,6 +153,7 @@
           <goals>
             <goal>install-node-and-npm</goal>
           </goals>
+          <phase>generate-resources</phase>
           <configuration>
             <nodeVersion>v14.17.2</nodeVersion>
             <npmVersion>6.14.13</npmVersion>
@@ -164,6 +165,7 @@
           <goals>
             <goal>npm</goal>
           </goals>
+          <phase>generate-resources</phase>
           <configuration>
             <arguments>install</arguments>
           </configuration>
@@ -174,6 +176,7 @@
           <goals>
             <goal>npm</goal>
           </goals>
+          <phase>compile</phase>
           <configuration>
             <arguments>run build</arguments>
           </configuration>
