@@ -84,6 +84,7 @@
                 ${project.build.directory}/classes/META-INF/resources
               </outputDirectory>
               <resources>
+                <resource><directory>./src/main/webapp</directory></resource>
                 <resource><directory>${reactDirectory}/build</directory></resource>
               </resources>
             </configuration>
