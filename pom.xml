@@ -144,7 +144,7 @@
         <configuration>
           <nodeVersion>${node.version}</nodeVersion>
           <workingDirectory>src/main/react-webapp</workingDirectory>
-          <installDirectory></installDirectory>
+          <installDirectory>target</installDirectory>
         </configuration>
       <executions>
 
