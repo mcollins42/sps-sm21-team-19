@@ -1,2 +1,19 @@
 # Google App Engine generated folder
 appengine-generated/
+.apt_generated
+.apt_generated_tests
+
+# Local Settings
+.settings
+.vscode
+.idea
+.classpath
+
+# Node/React Files
+.env.*
+npm-debug.log*
+build/
+node_modules/
+
+# Java Maven Build Files
+target/
