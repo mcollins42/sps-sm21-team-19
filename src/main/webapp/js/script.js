@@ -26,3 +26,41 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+/*Display all the drugs */
+function showDrugs() {
+  fetch('/list-drugs').then(response => response.json()).then((drugs) => {
+    const drugListElement = document.getElementById('drug-list');
+    drugs.forEach((drug) => {
+      drugListElement.appendChild(createDrugElement(drug));
+    }) 
+  });
+}
+
+function createDrugElement(drug) {
+    const drugElement = document.createElement('li');
+    drugElement.className = 'drug';
+
+    const nameElement = document.createElement('p');
+    nameElement.innerText = 'Name: '+ drug.name;
+
+    const whatIsElement = document.createElement('p');
+    whatIsElement.innerText = 'whatIs: ' + drug.whatIs;
+
+    const usesElement = document.createElement('p');
+    usesElement.innerText = 'Uses: ' + drug.uses;
+
+    const sideEffectsElement = document.createElement('p');
+    sideEffectsElement.innerText = 'Side Effects: ' + drug.sideEffects;
+
+    const risksElement = document.createElement('p');
+    risksElement.innerText = 'Risks: ' + drug.risks;
+
+    drugElement.appendChild(nameElement);
+    drugElement.appendChild(whatIsElement);
+    drugElement.appendChild(usesElement);
+    drugElement.appendChild(sideEffectsElement);
+    drugElement.appendChild(risksElement);
+    
+    return drugElement;
+}
