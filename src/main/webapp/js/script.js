@@ -44,23 +44,20 @@ function createDrugElement(drug) {
     const nameElement = document.createElement('p');
     nameElement.innerText = 'Name: '+ drug.name;
 
-    const whatIsElement = document.createElement('p');
-    whatIsElement.innerText = 'whatIs: ' + drug.whatIs;
-
-    const usesElement = document.createElement('p');
-    usesElement.innerText = 'Uses: ' + drug.uses;
-
-    const sideEffectsElement = document.createElement('p');
-    sideEffectsElement.innerText = 'Side Effects: ' + drug.sideEffects;
-
-    const risksElement = document.createElement('p');
-    risksElement.innerText = 'Risks: ' + drug.risks;
+    const aliasesElement = document.createElement('div');
+    aliasesElement.innerText = 'Aliases:';
+    const aliasListElement = document.createElement('ul');
+    drug.aliases.forEach(alias => aliasListElement.appendChild(createListElement(alias)));
+    aliasesElement.appendChild(aliasListElement);
 
     drugElement.appendChild(nameElement);
-    drugElement.appendChild(whatIsElement);
-    drugElement.appendChild(usesElement);
-    drugElement.appendChild(sideEffectsElement);
-    drugElement.appendChild(risksElement);
+    drugElement.appendChild(aliasesElement);
     
     return drugElement;
+}
+
+function createListElement(text) {
+    const listElement = document.createElement('li');
+    listElement.innerText = text;
+    return listElement;
 }

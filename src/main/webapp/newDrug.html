@@ -7,17 +7,15 @@
     <title>New drug</title>
 </head>
 <body>
-    <form method="POST" action="/new-Drug">
+    <form method="POST" action="/new-drug">
         <label for="name">Name</label><br>
         <input type="text" id="name" name="name" placeholder="Drug name"><br>
-        <label for="name">What is?</label><br>
-        <textarea id="whatIs" name="whatIs" placeholder="This drug is ..." style="height:100px"></textarea><br>
-        <label for="name">Uses</label><br>
-        <textarea id="uses" name="uses" placeholder="This drug is used ..." style="height:100px"></textarea><br>
-        <label for="name">side Effects</label><br>
-        <textarea id="sideEffects" name="sideEffects" placeholder="Vomiting, constipation..." style="height:100px"></textarea><br>
-        <label for="name">Risks</label><br>
-        <textarea id="risks" name="risks" placeholder="Overdose ..." style="height:100px"></textarea><br>
+        <label for="aliases">Aliases</label><br>
+        <input type="text" id="aliases" name="aliases" placeholder="pot|weed"><br>
+        <label for="description">Description</label><br>
+        <textarea id="description" name="description" placeholder="This drug is ..." style="height:100px"></textarea><br>
+        <label for="effects">Effects</label><br>
+        <textarea id="effects" name="effects" placeholder="relaxation|increase appetite|..." style="height:100px"></textarea><br>
         <input id="drugSubmit" type="submit" value="Submit">
         <a href="./list-drugs.html" style="color:red">list of drugs</a>
     </form>

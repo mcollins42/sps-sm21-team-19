@@ -12,14 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main.java.com.google.sps.servlets;
+package com.google.sps.servlets;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.IncompleteKey;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.StringValue;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,30 +34,44 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 /** Servlet responsible for creating new tasks. */
-@WebServlet("/new-Drug")
+@WebServlet("/new-drug")
 public class NewDrugServlet extends HttpServlet {
+
+  private static final String LIST_DELIMITER = "\\|";
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
-    String name = Jsoup.clean(request.getParameter("name"), Whitelist.none());
-    String whatIs = Jsoup.clean(request.getParameter("whatIs"), Whitelist.none());
-    String uses = Jsoup.clean(request.getParameter("uses"), Whitelist.none());
-    String sideEffects = Jsoup.clean(request.getParameter("sideEffects"), Whitelist.none());
-    String risks = Jsoup.clean(request.getParameter("risks"), Whitelist.none());  
+    String name = getCleanParameter(request, "name");
+    List<StringValue> aliases = splitString(getCleanParameter(request, "aliases"));
+    String description = getCleanParameter(request, "description");
+    List<StringValue> effects = splitString(getCleanParameter(request,"effects"));
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Drug");
-    FullEntity drugEntity =
+    FullEntity drugEntity = 
         Entity.newBuilder(keyFactory.newKey())
-            .set("name", name)
-            .set("whatIs", whatIs)
-            .set("uses", uses)
-            .set("sideEffects", sideEffects)
-            .set("risks", risks)
+            .set("Name", name)
+            .set("Aliases", aliases)
+            .set("Description", description)
+            .set("Effects", effects)
             .build();
+
     datastore.put(drugEntity);
 
     response.sendRedirect("/list-drugs.html");
+  }
+
+  private String getCleanParameter(HttpServletRequest request, String parameterName) {
+    return Jsoup.clean(request.getParameter(parameterName), Whitelist.none());
+  }
+
+  private List<StringValue> splitString(String input) {
+      List<StringValue> list = new ArrayList<StringValue>();
+      String[] strings = input.split(LIST_DELIMITER);
+      for (String s : strings) {
+          list.add(StringValue.of(s.trim()));
+      }
+      return list;
   }
 }

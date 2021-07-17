@@ -16,16 +16,20 @@ package com.google.sps.data;
 
 import java.util.List;
 
-/** Just enough information about a drug to populate a searchable drug list. */
-public final class Drug {
+/** The full details for a drug. This will be displayed on the single drug page. */
+public final class DrugDetails {
 
   private final long id;
   private final String name;
   private final List<String> aliases;
+  private final String description;
+  private final List<String> effects;
 
-  public Drug(long id, String name, List<String> aliases) {
+  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects) {
     this.id = id;
     this.name = name;
     this.aliases = aliases;
+    this.description = description;
+    this.effects = effects;
   }
 }

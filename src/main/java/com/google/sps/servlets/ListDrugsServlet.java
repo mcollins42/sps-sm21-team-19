@@ -12,16 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main.java.com.google.sps.servlets;
+package com.google.sps.servlets;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StringValue;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
+import com.google.cloud.datastore.Value;
+import com.google.cloud.datastore.ValueType;
 import com.google.gson.Gson;
-import main.java.com.google.sps.data.Drug;
+import com.google.sps.data.Drug;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +41,7 @@ public class ListDrugsServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Drug").setOrderBy(OrderBy.asc("name")).build();
+        Query.newEntityQueryBuilder().setKind("Drug").setOrderBy(OrderBy.asc("Name")).build();
     QueryResults<Entity> results = datastore.run(query);
 
     List<Drug> drugs = new ArrayList<>();
@@ -46,13 +49,10 @@ public class ListDrugsServlet extends HttpServlet {
       Entity entity = results.next();
 
       long id = entity.getKey().getId();
-      String name = entity.getString("name");
-      String whatIs = entity.getString("whatIs");
-      String uses = entity.getString("uses");
-      String sideEffects = entity.getString("sideEffects");
-      String risks = entity.getString("risks");
+      String name = entity.getString("Name");
+      List<String> aliases = getStringList(entity.getList("Aliases"));
 
-      Drug drug = new Drug(id, name, whatIs, uses, sideEffects, risks);
+      Drug drug = new Drug(id, name, aliases);
       drugs.add(drug);
     }
 
@@ -60,5 +60,13 @@ public class ListDrugsServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(drugs));
+  }
+
+  List<String> getStringList(List<StringValue> values) {
+    List<String> stringList = new ArrayList<String>(values.size());
+    for(StringValue stringValue : values) {
+        stringList.add(stringValue.get());
+    }
+    return stringList;
   }
 }
