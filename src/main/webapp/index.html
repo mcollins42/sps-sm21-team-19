@@ -3,14 +3,78 @@
   <head>
     <meta charset="UTF-8">
     <title>Drug Safety</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Phone-->
+    <link rel="stylesheet" media="screen and (max-width:650px)" href="css/indexPhoneStyle.css" >
+    
+    <script src="js/script.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+
   </head>
   <body>
+    <header>
+      <div class="navbar">
+        this is the navbar
+      </div>
+    </header>
     <div id="content">
-      <h1>Drug Safety Information</h1>
-      <p>This is a placeholder for the Team 19 Drug Safety Information site.</p>
-      <p>Say <a href="/hello">hello</a></p>
-    </div>
+      <!-- Drop down emergancy menu -->
+      <div class="fixed-top dropdown">
+        <button class="dropbtn">EMERGENCY</button>
+        <div class="dropdown-content">
+          <a href="Overdose.html">Overdose</a>
+          <a href="Adiction.html">Addiction</a>
+          <a href="Resources.html">Resources</a>
+        </div>
+      </div>
+  
+      <div class="container">
+        <h1 class="title">Drug Safety</h1>
+
+        <!-- Search a drug -->
+        <div class="search">
+          <p>Find information on a drug:</p>
+          <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <a href="#" class="input-group-text border-0" id="search-addon" style="background-color: white;">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="trendingSearches">
+            <p style="display: inline;">Trending searches:</p>
+            <a href="#">Cannabis</a>
+            <a href="#">Addiction</a>
+            <a href="#">Heroin</a>
+            <a href="#">Nicotine</a>
+            <a href="#">Cocaine</a>
+          </div>
+        </div>
+        
+        <div class="row">
+          <a class="col-sm indexMenu" href="#">
+            <img src="images/sideEffects.png">
+            <div><p>Side Effects</p></div>
+          </a>
+          <a class="col-sm indexMenu" href="#">
+            <img src="images/drugs.png">
+            <div><p>All drugs</p></div>
+          </a>
+          <a class="col-sm indexMenu" href="#">
+            <img src="images/map.png">
+            <div><p>Where to find them?</p></div>
+          </div>
+        </a>
+      </div>
   </body>
 </html>
