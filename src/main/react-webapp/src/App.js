@@ -8,7 +8,9 @@ import AllDrugs from './components/AllDrugs';
 function App() {
 
   return (
+      
       <Router>
+          <Navbar/>
         <Route exact path="/" component={Home}/>
           {/*this is just an example of how a route should look like work and should be removed*/}
         <Route exact path="/example" component={Example}/>

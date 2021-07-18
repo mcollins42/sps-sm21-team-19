@@ -7,7 +7,7 @@ import sideEffects from '../images/sideEffects.png'
 
 const Home = () => {
 
-
+    return(
         <div id="content">
             {/* Drop down emergancy menu */}
 
