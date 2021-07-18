@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>New drug</title>
+</head>
+<body>
+    <div class="mt-5">
+            <h3 class="text-center">
+                Add a new drug
+            </h3>
+            <hr />
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-md-6 col-xl-4">
+                 <form method="POST" action="/new-drug">
+                    <label for="name">Name</label><br>
+                    <input type="text" id="name" name="name" placeholder="Drug name"><br>
+                    <label for="aliases">Aliases</label><br>
+                    <input type="text" id="aliases" name="aliases" placeholder="pot|weed"><br>
+                    <label for="description">Description</label><br>
+                    <textarea id="description" name="description" placeholder="This drug is ..." style="height:100px"></textarea><br>
+                    <label for="effects">Effects</label><br>
+                    <textarea id="effects" name="effects" placeholder="relaxation|increase appetite|..." style="height:100px"></textarea><br>
+                    <input id="drugSubmit" type="submit" value="Submit">
+                    <a href="./list-drugs.html" style="color:red">list of drugs</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

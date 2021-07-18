@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+
+html{
+    scroll-behavior: smooth;
+  }
+  
+  *{
+    font-family: sans-serif, Arial, Helvetica;
+    box-sizing: border-box;
+  }
+  
+  html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  /*--------------------Body--------------------*/
+  #content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    width: 70vw;
+    text-align: center;
+  }
+  
+  #greeting-container {margin-top: 20px;}
+  
+  .title{
+    font-size: 10rem;
+    margin: 5rem 0;
+    text-transform: uppercase;
+    font-family: 'Boogaloo', cursive;;
+  }
+  
+  .form-control-borderless {border: none;}
+  
+  .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  /* -------------------- Search a drug --------------------*/
+  .search{margin-bottom: 6rem;}
+  
+  .trendingSearches a, .trendingSearches p{
+    color: grey;
+    font-size: 0.8rem;
+  }
+  
+  .trendingSearches a{
+    text-decoration: underline;
+    margin: .5rem;
+  }
+  
+  .trendingSearches a:hover{
+    text-decoration: none;
+    color:#ef8354;
+  }
+  
+  /* -------------------- Menu -------------------- */
+  .indexMenu{
+    text-align: center;
+    text-decoration: none;
+    color:black;
+    min-width: 300px;
+  }
+  
+  .indexMenu:hover{
+    text-decoration: none;
+  }
+  
+  .indexMenu p{
+    font-size: 1.1em;
+  }
+  
+  .indexMenu:hover p{
+    font-weight: bold;
+    color:#fc4c4c;
+  }
+  
+  .indexMenu img{
+    width: 12rem;
+  }
+  
