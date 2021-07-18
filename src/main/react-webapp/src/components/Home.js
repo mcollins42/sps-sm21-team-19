@@ -7,7 +7,7 @@ import sideEffects from '../images/sideEffects.png'
 
 const Home = () => {
 
-    return(
+
         <div id="content">
             {/* Drop down emergancy menu */}
 
@@ -20,7 +20,7 @@ const Home = () => {
                         <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon" />
                         <NavLink to="#" className="input-group-text border-0" id="search-addon" style={{backgroundColor: 'white'}}>
-                        <i className="fa fa-search" aria-hidden="true"/>
+                        <i className="fa fa-search" aria-hidden="true"></i>
                         </NavLink>
                     </div>
                     <div className="trendingSearches">
