@@ -38,7 +38,7 @@ const Home = () => {
                         <img src={sideEffects} alt='sideEffects'/>
                         <div><p>Side Effects</p></div>
                     </NavLink>
-                    <NavLink className="col-sm indexMenu" to="#">
+                    <NavLink className="col-sm indexMenu" to="/All-Drugs">
                         <img src={drugs} alt='drugs'/>
                         <div><p>All drugs</p></div>
                     </NavLink>
