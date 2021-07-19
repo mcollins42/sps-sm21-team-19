@@ -43,18 +43,31 @@ public class NewDrugServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
     String name = getCleanParameter(request, "name");
+    String classification = getCleanParameter(request, "classification");
     List<StringValue> aliases = splitString(getCleanParameter(request, "aliases"));
+    String safetyDescription = getCleanParameter(request, "safetyDescription");
+    List<StringValue> drugWarningSigns = splitString(getCleanParameter(request, "drugWarningSigns"));
     String description = getCleanParameter(request, "description");
     List<StringValue> effects = splitString(getCleanParameter(request,"effects"));
+    List<StringValue> overdoseSigns = splitString(getCleanParameter(request, "overdoseSigns"));
+    List<StringValue> legalLocations = splitString(getCleanParameter(request, "legalLocations"));
+    List<StringValue> decriminalizedLocations = splitString(getCleanParameter(request, "decriminalizedLocations"));
+
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Drug");
     FullEntity drugEntity = 
         Entity.newBuilder(keyFactory.newKey())
             .set("Name", name)
+            .set("Classification", classification)
             .set("Aliases", aliases)
+            .set("SafetyDescription", safetyDescription)
+            .set("DrugWarningSigns", drugWarningSigns)
             .set("Description", description)
             .set("Effects", effects)
+            .set("OverdoseSigns", overdoseSigns)
+            .set("LegalLocations", legalLocations)
+            .set("DecriminalizedLocations", decriminalizedLocations)
             .build();
 
     datastore.put(drugEntity);
