@@ -24,12 +24,18 @@ public final class DrugDetails {
   private final List<String> aliases;
   private final String description;
   private final List<String> effects;
+  private final String safetyDescription;
+  private final List<String> legalLocations;
+  private final List<String> decriminalizedLocations;
 
-  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects) {
+  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects, String safetyDescription, List<String> legalLocations, List<String> decriminalizedLocations) {
     this.id = id;
     this.name = name;
     this.aliases = aliases;
     this.description = description;
     this.effects = effects;
+    this.safetyDescription = safetyDescription;
+    this.legalLocations = legalLocations;
+    this.decriminalizedLocations = decriminalizedLocations;
   }
 }
