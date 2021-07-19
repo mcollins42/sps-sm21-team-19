@@ -38,4 +38,15 @@ public final class DrugDetails {
     this.legalLocations = legalLocations;
     this.decriminalizedLocations = decriminalizedLocations;
   }
+
+  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects, String safetyDescription) {
+    this.id = id;
+    this.name = name;
+    this.aliases = aliases;
+    this.description = description;
+    this.effects = effects;
+    this.safetyDescription = safetyDescription;
+    this.legalLocations = null;
+    this.decriminalizedLocations = null;
+  }
 }
