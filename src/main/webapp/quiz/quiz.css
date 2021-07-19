@@ -1,0 +1,51 @@
+.border {
+	border: 2px solid;
+	border-color: black;
+	padding: 10px;
+}
+
+.head-style {
+	height: 70px;
+	background-color: gray;
+}
+
+.header {
+	font-family: Tahoma;
+	font-size: 20px;
+	color: #8a8a8a;
+	text-align: center;
+}
+
+.question {
+	font-family: Tahoma;
+	font-size: 15px;
+	text-align: center;
+	padding: 5px;
+}
+
+.note {
+	font-family: Tahoma;
+	font-size: 10px;
+	text-align: center;
+}
+
+.answer-left {
+	float: left;
+	width: 50%;
+	padding: 5px;
+	text-align: center;
+}
+
+.answer-right {
+	margin-left: 50%;
+	text-align: center;
+	padding: 5px;
+}
+
+.answer-one {
+	float: center;
+	word-spacing: 6px;
+	text-align: center;
+	padding: 5px;
+}
+

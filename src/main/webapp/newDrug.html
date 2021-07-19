@@ -9,13 +9,35 @@
 <body>
     <form method="POST" action="/new-drug">
         <label for="name">Name</label><br>
-        <input type="text" id="name" name="name" placeholder="Drug name"><br>
+        <input type="text" id="name" name="name" placeholder="drug name"><br>
+
+        <label for="classification">Classification</label><br>
+        <input type="text" id="classification" name="classification" placeholder="opiod"><br>
+
         <label for="aliases">Aliases</label><br>
         <input type="text" id="aliases" name="aliases" placeholder="pot|weed"><br>
+
+        <label for="safetyDescription">Safety Description</label><br>
+        <textarea id="safetyDescription" name="safetyDescription" placeholder="how can this drug be safely taken?" style="height:100px"></textarea><br>
+        
+        <label for="drugWarningSigns">Drug Warning Signs</label><br>
+        <textarea id="drugWarningSigns" name="drugWarningSigns" placeholder="signs that it may be laced." style="height:100px"></textarea><br>  
+
         <label for="description">Description</label><br>
-        <textarea id="description" name="description" placeholder="This drug is ..." style="height:100px"></textarea><br>
+        <textarea id="description" name="description" placeholder="what it looks like..." style="height:100px"></textarea><br>  
+
         <label for="effects">Effects</label><br>
         <textarea id="effects" name="effects" placeholder="relaxation|increase appetite|..." style="height:100px"></textarea><br>
+        
+        <label for="overdoseSigns">Overdose Signs</label><br>
+        <textarea id="overdoseSigns" name="overdoseSigns" placeholder="unconscious|slow breathing|..." style="height:100px"></textarea><br>
+        
+        <label for="legalLocations">Legal Locations</label><br>
+        <textarea id="legalLocations" name="legalLocations" placeholder="states where this drug is legal to use." style="height:100px"></textarea><br>
+        
+        <label for="decriminalizedLocations">Decriminalized Locations</label><br>
+        <textarea id="decriminalizedLocations" name="decriminalizedLocations" placeholder="states where this drug is decriminalized." style="height:100px"></textarea><br>
+        
         <input id="drugSubmit" type="submit" value="Submit">
         <a href="./list-drugs.html" style="color:red">list of drugs</a>
     </form>
