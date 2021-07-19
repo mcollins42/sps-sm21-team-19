@@ -1,9 +1,11 @@
+import React from 'react';
 import './css/App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from "./components/Home";
 import Example from "./components/Example"
 import Navbar from './components/Navbar';
 import AllDrugs from './components/AllDrugs';
+import SingleDrug from './components/SingleDrug';
 
 function App() {
 
@@ -16,6 +18,9 @@ function App() {
         <Route exact path="/example" component={Example}/>
         <Route path="/All-Drugs">
             <AllDrugs/>
+        </Route>
+        <Route exact path="/:id">
+            <SingleDrug/>
         </Route>
       </Router>
   );
