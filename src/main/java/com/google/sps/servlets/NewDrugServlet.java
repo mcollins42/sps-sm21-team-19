@@ -61,13 +61,13 @@ public class NewDrugServlet extends HttpServlet {
             .set("Name", name)
             .set("Classification", classification)
             .set("Aliases", aliases)
-            .set("Safety Description", safetyDescription)
-            .set("Drug Warning Signs", drugWarningSigns)
+            .set("SafetyDescription", safetyDescription)
+            .set("DrugWarningSigns", drugWarningSigns)
             .set("Description", description)
             .set("Effects", effects)
-            .set("Overdose Signs", overdoseSigns)
-            .set("Legal Locations", legalLocations)
-            .set("Decriminalized Locations", decriminalizedLocations)
+            .set("OverdoseSigns", overdoseSigns)
+            .set("LegalLocations", legalLocations)
+            .set("DecriminalizedLocations", decriminalizedLocations)
             .build();
 
     datastore.put(drugEntity);
