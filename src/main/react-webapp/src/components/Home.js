@@ -10,27 +10,33 @@ const Home = () => {
     let history = useHistory();
 
     const handleChange = e => {
+        //console.log(e.target.value, e.target.selectedOptions[0].label)
         const value = e.target.value
-        history.push(`/drug/${value}`);
+        const label = e.target.selectedOptions[0].label
+        history.push(`/${label}?id=${value}`);
+        //history.push(`/${value}`);
     }
 
     const [drugs, setDrugs] = React.useState([])
 
     React.useEffect(() => {
         const getData = async () =>{
-            const data = await fetch('/list-drugs')
+            const data = await fetch('https://jsonplaceholder.typicode.com/users')
             const allDrugs = await data.json()
             setDrugs(allDrugs)
+            //console.log(allDrugs)
         }
         getData()
     }, [])
+
+    
 
     return(
         <div id="content">
             {/* Drop down emergancy menu */}
 
             <div className="container">
-                <h1 className="title">Drug Safety2</h1>
+                <h1 className="title">Drug Safety</h1>
                 {/* Search a drug  */}
                 <div className="search">
                     <p>Find information on a drug:</p>
@@ -44,8 +50,17 @@ const Home = () => {
                                 
                             ))
                         }
+                        <option value="11" name="marijuana">marijuana</option>
                     </select>
-
+                    {/* <div>
+                        <select onChange={event => handleChange(event.target.value)}>
+                            <option>Select Location</option>
+                            <option key="1" value="east">East Building</option>
+                            <option key="2" value="west">West Building</option>
+                            <option key="3" value="south">South Building</option>
+                            <option key="4" value="north">North Building</option>
+                        </select>
+                    </div> */}
                     <div className="trendingSearches">
                         <p style={{display: "inline;"}}>Trending searches:</p>
                         <NavLink to="#">Cannabis</NavLink>
