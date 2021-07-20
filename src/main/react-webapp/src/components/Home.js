@@ -10,10 +10,12 @@ const Home = () => {
     let history = useHistory();
 
     const handleChange = e => {
-        //console.log(e.target.value, e.target.selectedOptions[0].label)
+        console.log(e.target.value, e.target.selectedOptions[0].label)
         const value = e.target.value
         const label = e.target.selectedOptions[0].label
+        console.log(e.target)
         history.push(`/${label}?id=${value}`);
+        
         //history.push(`/${value}`);
     }
 
@@ -28,8 +30,6 @@ const Home = () => {
         }
         getData()
     }, [])
-
-    
 
     return(
         <div id="content">
