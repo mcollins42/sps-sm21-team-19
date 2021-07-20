@@ -21,32 +21,28 @@ public final class DrugDetails {
 
   private final long id;
   private final String name;
+  private final String classification;
   private final List<String> aliases;
+  private final String safetyDescription;
+  private final List<String> drugWarningSigns;
   private final String description;
   private final List<String> effects;
-  private final String safetyDescription;
+  private final List<String> overdoseSigns;
   private final List<String> legalLocations;
   private final List<String> decriminalizedLocations;
 
-  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects, String safetyDescription, List<String> legalLocations, List<String> decriminalizedLocations) {
+  public DrugDetails(long id, String name, String classification, List<String> aliases, String safetyDescription, List<String> drugWarningSigns, String description, List<String> effects, List<String> overdoseSigns, List<String> legalLocations, List<String> decriminalizedLocations) {
     this.id = id;
     this.name = name;
+    this.classification = classification;
     this.aliases = aliases;
+    this.safetyDescription = safetyDescription;
+    this.drugWarningSigns = drugWarningSigns;
     this.description = description;
     this.effects = effects;
-    this.safetyDescription = safetyDescription;
+    this.overdoseSigns = overdoseSigns;
     this.legalLocations = legalLocations;
     this.decriminalizedLocations = decriminalizedLocations;
   }
 
-  public DrugDetails(long id, String name, List<String> aliases, String description, List<String> effects, String safetyDescription) {
-    this.id = id;
-    this.name = name;
-    this.aliases = aliases;
-    this.description = description;
-    this.effects = effects;
-    this.safetyDescription = safetyDescription;
-    this.legalLocations = null;
-    this.decriminalizedLocations = null;
-  }
 }
