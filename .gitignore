@@ -8,6 +8,9 @@ appengine-generated/
 .vscode
 .idea
 .classpath
+.factorypath
+.project
+.theia
 
 # Node/React Files
 .env.*
