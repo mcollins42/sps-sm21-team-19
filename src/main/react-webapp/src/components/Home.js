@@ -21,7 +21,7 @@ const Home = () => {
 
     React.useEffect(() => {
         const getData = async () =>{
-            const data = await fetch('https://jsonplaceholder.typicode.com/users')
+            const data = await fetch('/list-drugs')
             const allDrugs = await data.json()
             setDrugs(allDrugs)
             //console.log(allDrugs)
@@ -50,17 +50,8 @@ const Home = () => {
                                 
                             ))
                         }
-                        <option value="11" name="marijuana">marijuana</option>
                     </select>
-                    {/* <div>
-                        <select onChange={event => handleChange(event.target.value)}>
-                            <option>Select Location</option>
-                            <option key="1" value="east">East Building</option>
-                            <option key="2" value="west">West Building</option>
-                            <option key="3" value="south">South Building</option>
-                            <option key="4" value="north">North Building</option>
-                        </select>
-                    </div> */}
+
                     <div className="trendingSearches">
                         <p style={{display: "inline;"}}>Trending searches:</p>
                         <NavLink to="#">Cannabis</NavLink>

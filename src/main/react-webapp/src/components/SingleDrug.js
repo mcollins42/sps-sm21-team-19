@@ -15,7 +15,8 @@ const SingleDrug = () => {
 
     React.useEffect(() => {
         const getData = async () =>{
-            const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+            /* const data = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`) */
+            const data = await fetch(`/list-drugs`)
             const drugInfo = await data.json()
             setDrug(drugInfo)
             //console.log(drugInfo)
@@ -27,6 +28,7 @@ const SingleDrug = () => {
     
     return (
         <div>
+            single drug
             <h3>{drug.name}</h3>
             <p>{drug.email}</p>
         </div>
