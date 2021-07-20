@@ -20,11 +20,8 @@ import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StringValue;
-import com.google.cloud.datastore.StructuredQuery.OrderBy;
-import com.google.cloud.datastore.Value;
-import com.google.cloud.datastore.ValueType;
 import com.google.gson.Gson;
-import com.google.sps.data.Drug;
+import com.google.sps.data.DrugDetails;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,38 +32,36 @@ import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for getting drug info. */
 @WebServlet("/list-drug-info")
-public class DrugServlet extends HttpServlet {
+public class ListDrugInfoServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    String drugname = request.getParameter()
-    Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Drug").setOrderBy(OrderBy.asc("Name")).build();
+    String gqlQuery = "SELECT * FROM Drug WHERE Name = " + request.getParameter("Name");
+    Query<Entity> query = Query.newGqlQueryBuilder(Query.ResultType.ENTITY, gqlQuery).build();
     QueryResults<Entity> results = datastore.run(query);
 
-    List<Drug> drugInfo = new ArrayList<>();
-    //Probably can implement a binary search to find the dat 
-    while (results.hasNext()) {
-      Entity entity = results.next();
+    Entity entity = results.next();
+    long id = entity.getKey().getId();
+    String name = entity.getString("Name");
+    List<String> aliases = getStringList(entity.getList("Aliases"));
+    String description = entity.getString("Description");
+    List<String> effects = getStringList(entity.getList("Effects"));
+    String safetyDescription = entity.getString("SafetyDescription");
+    List<String> legalLocations = getStringList(entity.getList("LegalLocations"));
+    List<String> decriminalizedLocations = getStringList(entity.getList("DecriminalizedLocations"));
 
-      long id = entity.getKey().getId();
-      String name = entity.getString("Name");
-      List<String> aliases = getStringList(entity.getList("Aliases"));
-
-      Drug drug = new Drug(id, name, aliases);
-      drugInfo.add(drug);
-    }
+    DrugDetails drugDetails = new DrugDetails(id, name, aliases, description, effects, safetyDescription, legalLocations, decriminalizedLocations);
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(drugInfo));
+    response.getWriter().println(gson.toJson(drugDetails));
   }
 
   List<String> getStringList(List<StringValue> values) {
-    List<String> stringList = new ArrayList<String>(values.size());
+    List<String> stringList = new ArrayList<>(values.size());
     for(StringValue stringValue : values) {
         stringList.add(stringValue.get());
     }
