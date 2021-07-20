@@ -8,6 +8,9 @@ appengine-generated/
 .vscode
 .idea
 .classpath
+.factorypath
+.project
+.theia
 
 # Node/React Files
 .env.*
@@ -18,6 +21,7 @@ node_modules/
 # Java Maven Build Files
 target/
 
-.Home.js.swp 
+# Swap files
+.*.swp 
 
 
