@@ -14,12 +14,7 @@
 
 package com.google.sps.servlets;
 
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreOptions;
-import com.google.cloud.datastore.Entity;
-import com.google.cloud.datastore.Query;
-import com.google.cloud.datastore.QueryResults;
-import com.google.cloud.datastore.StringValue;
+import com.google.cloud.datastore.*;
 import com.google.gson.Gson;
 import com.google.sps.data.DrugDetails;
 import java.io.IOException;
@@ -30,41 +25,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet responsible for getting drug info. */
+
+//Servlet responsible for getting drug info.
+
 @WebServlet("/list-drug-info")
 public class ListDrugInfoServlet extends HttpServlet {
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    String gqlQuery = "SELECT * FROM Drug WHERE Name = " + request.getParameter("Name");
-    Query<Entity> query = Query.newGqlQueryBuilder(Query.ResultType.ENTITY, gqlQuery).build();
+    String Name = request.getParameter("Name");
+    Query<Entity> query = Query.newEntityQueryBuilder()
+            .setKind("Drug")
+            .setFilter(StructuredQuery.PropertyFilter.gt("Name", Name))
+            .setLimit(1)
+            .build();
     QueryResults<Entity> results = datastore.run(query);
 
-    Entity entity = results.next();
-    long id = entity.getKey().getId();
-    String name = entity.getString("Name");
-    List<String> aliases = getStringList(entity.getList("Aliases"));
-    String description = entity.getString("Description");
-    List<String> effects = getStringList(entity.getList("Effects"));
-    String safetyDescription = entity.getString("SafetyDescription");
-    List<String> legalLocations = getStringList(entity.getList("LegalLocations"));
-    List<String> decriminalizedLocations = getStringList(entity.getList("DecriminalizedLocations"));
+		Entity entity = results.next();
+		long id = entity.getKey().getId();
+		String name = entity.getString("Name");
+		String classification = entity.getString("Classification");
+		List<String> aliases = getStringList(entity.getList("Aliases"));
+		String safetyDescription = entity.getString("SafetyDescription");
+		List<String> drugWarningSigns = getStringList(entity.getList("DrugWarningSigns"));
+		String description = entity.getString("Description");
+		List<String> effects = getStringList(entity.getList("Effects"));
+		List<String> overdoseSigns = getStringList(entity.getList("OverdoseSigns"));
+		List<String> legalLocations = getStringList(entity.getList("LegalLocations"));
+		List<String> decriminalizedLocations = getStringList(entity.getList("DecriminalizedLocations"));
 
-    DrugDetails drugDetails = new DrugDetails(id, name, aliases, description, effects, safetyDescription, legalLocations, decriminalizedLocations);
+		DrugDetails drugDetails = new DrugDetails(id, name, classification, aliases, safetyDescription, drugWarningSigns, description, effects, overdoseSigns, legalLocations, decriminalizedLocations);
 
-    Gson gson = new Gson();
+		Gson gson = new Gson();
 
-    response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(drugDetails));
-  }
+		response.setContentType("application/json;");
+		response.getWriter().println(gson.toJson(drugDetails));
+	}
 
-  List<String> getStringList(List<StringValue> values) {
-    List<String> stringList = new ArrayList<>(values.size());
-    for(StringValue stringValue : values) {
-        stringList.add(stringValue.get());
-    }
-    return stringList;
-  }
+	List<String> getStringList(List<StringValue> values) {
+		List<String> stringList = new ArrayList<>(values.size());
+		for (StringValue stringValue : values) {
+			stringList.add(stringValue.get());
+		}
+		return stringList;
+	}
 }
