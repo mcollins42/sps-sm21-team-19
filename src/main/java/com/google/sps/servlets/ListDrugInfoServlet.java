@@ -35,15 +35,12 @@ public class ListDrugInfoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    String Name = request.getParameter("Name");
-    Query<Entity> query = Query.newEntityQueryBuilder()
-            .setKind("Drug")
-            .setFilter(StructuredQuery.PropertyFilter.eq("Name", Name))
-            .setLimit(1)
-            .build();
-    QueryResults<Entity> results = datastore.run(query);
 
-		Entity entity = results.next();
+		long drugID = Long.parseLong(request.getParameter("id"));
+		KeyFactory keyFactory = datastore.newKeyFactory().setKind("Drug");
+		Key drugEntityKey = keyFactory.newKey(drugID);
+		Entity entity = datastore.get(drugEntityKey);
+
 		long id = entity.getKey().getId();
 		String name = entity.getString("Name");
 		String classification = entity.getString("Classification");
