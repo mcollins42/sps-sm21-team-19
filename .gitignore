@@ -18,6 +18,7 @@ node_modules/
 # Java Maven Build Files
 target/
 
-.Home.js.swp 
+# Swap files
+.*.swp 
 
 
