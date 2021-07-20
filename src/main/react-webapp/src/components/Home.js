@@ -10,13 +10,8 @@ const Home = () => {
     let history = useHistory();
 
     const handleChange = e => {
-        console.log(e.target.value, e.target.selectedOptions[0].label)
         const value = e.target.value
-        const label = e.target.selectedOptions[0].label
-        console.log(e.target)
-        history.push(`/${label}?id=${value}`);
-        
-        //history.push(`/${value}`);
+        history.push(`/drug/${value}`);
     }
 
     const [drugs, setDrugs] = React.useState([])
@@ -26,7 +21,6 @@ const Home = () => {
             const data = await fetch('/list-drugs')
             const allDrugs = await data.json()
             setDrugs(allDrugs)
-            //console.log(allDrugs)
         }
         getData()
     }, [])
@@ -36,7 +30,7 @@ const Home = () => {
             {/* Drop down emergancy menu */}
 
             <div className="container">
-                <h1 className="title">Drug Safety</h1>
+                <h1 className="title">Drug Safety2</h1>
                 {/* Search a drug  */}
                 <div className="search">
                     <p>Find information on a drug:</p>
