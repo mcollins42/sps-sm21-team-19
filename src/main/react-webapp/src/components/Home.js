@@ -30,7 +30,7 @@ const Home = () => {
             {/* Drop down emergancy menu */}
 
             <div className="container">
-                <h1 className="title">Drug Safety2</h1>
+                <h1 className="title">Drug Safety</h1>
                 {/* Search a drug  */}
                 <div className="search">
                     <p>Find information on a drug:</p>
@@ -44,8 +44,16 @@ const Home = () => {
                                 
                             ))
                         }
+                        
                     </select>
-
+                    {/* <Autocomplete
+                        id="free-solo-demo"
+                        freeSolo
+                        options={top100Films.map((option) => option.title)}
+                        renderInput={(params) => (
+                        <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+                        )}
+                    /> */}
                     <div className="trendingSearches">
                         <p style={{display: "inline;"}}>Trending searches:</p>
                         <NavLink to="#">Cannabis</NavLink>
@@ -61,7 +69,7 @@ const Home = () => {
                         <img src={sideEffects} alt='sideEffects'/>
                         <div><p>Side Effects</p></div>
                     </NavLink>
-                    <NavLink className="col-sm indexMenu" to="/All-Drugs">
+                    <NavLink className="col-sm indexMenu" to="/all-drugs">
                         <img src={drugsImg} alt='drugs'/>
                         <div><p>All drugs</p></div>
                     </NavLink>
