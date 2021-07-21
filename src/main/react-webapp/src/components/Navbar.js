@@ -8,7 +8,7 @@ const Navbar = () => {
             <div>
                 <div className="d-flex">
                     <NavLink className="btn btn-dark mr-2" to="/" exact>
-                        Inicio
+                        Home
                     </NavLink>
                     <NavLink className="btn btn-dark mr-2" to="/example">
                         Example

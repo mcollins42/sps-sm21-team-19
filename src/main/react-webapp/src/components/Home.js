@@ -10,26 +10,20 @@ const Home = () => {
     let history = useHistory();
 
     const handleChange = e => {
-        //console.log(e.target.value, e.target.selectedOptions[0].label)
         const value = e.target.value
-        const label = e.target.selectedOptions[0].label
-        history.push(`/${label}?id=${value}`);
-        //history.push(`/${value}`);
+        history.push(`/drug/${value}`);
     }
 
     const [drugs, setDrugs] = React.useState([])
 
     React.useEffect(() => {
         const getData = async () =>{
-            const data = await fetch('https://jsonplaceholder.typicode.com/users')
+            const data = await fetch('/list-drugs')
             const allDrugs = await data.json()
             setDrugs(allDrugs)
-            //console.log(allDrugs)
         }
         getData()
     }, [])
-
-    
 
     return(
         <div id="content">
@@ -50,17 +44,16 @@ const Home = () => {
                                 
                             ))
                         }
-                        <option value="11" name="marijuana">marijuana</option>
+                        
                     </select>
-                    {/* <div>
-                        <select onChange={event => handleChange(event.target.value)}>
-                            <option>Select Location</option>
-                            <option key="1" value="east">East Building</option>
-                            <option key="2" value="west">West Building</option>
-                            <option key="3" value="south">South Building</option>
-                            <option key="4" value="north">North Building</option>
-                        </select>
-                    </div> */}
+                    {/* <Autocomplete
+                        id="free-solo-demo"
+                        freeSolo
+                        options={top100Films.map((option) => option.title)}
+                        renderInput={(params) => (
+                        <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+                        )}
+                    /> */}
                     <div className="trendingSearches">
                         <p style={{display: "inline;"}}>Trending searches:</p>
                         <NavLink to="#">Cannabis</NavLink>
@@ -76,7 +69,7 @@ const Home = () => {
                         <img src={sideEffects} alt='sideEffects'/>
                         <div><p>Side Effects</p></div>
                     </NavLink>
-                    <NavLink className="col-sm indexMenu" to="/All-Drugs">
+                    <NavLink className="col-sm indexMenu" to="/all-drugs">
                         <img src={drugsImg} alt='drugs'/>
                         <div><p>All drugs</p></div>
                     </NavLink>
