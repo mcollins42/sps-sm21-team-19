@@ -65,10 +65,17 @@
 	float: left;
 }
 
+.content-table {
+	font-family: Tahoma;
+	font-size: 15px;
+	
+}
+
 .body-text {
 	font-size: 13px;
 	font-family: Tahoma;
-	padding-left: 45px;
+	padding-left: 35px;
+	padding-right: 35px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	float: left;
@@ -89,4 +96,24 @@
 	padding-left: 50px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	text-align: left;
+}
+
+.spacing1 {
+	padding-top: 350px;
+}
+
+.spacing2 {
+	padding-top: 250px;
+}
+
+.example1-left {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+.example1-right {
+	margin-left: 50%;
+	text-align: center;
 }

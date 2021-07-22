@@ -40,6 +40,12 @@
 	margin-left: 50%;
 	text-align: center;
 	padding: 5px;
+}
+
+.answer-one {
+	float: center;
+	word-spacing: 6px;
 	text-align: center;
+	padding: 5px;
 }
 
