@@ -1,4 +1,4 @@
-
+import '../css/DrugPage.css'
 
 const DrugPageList = ({title, listItems}) => {
 
@@ -7,8 +7,8 @@ const DrugPageList = ({title, listItems}) => {
  }
 
  return(
- 	 <div>
-	  <h1>{title}</h1>
+ 	 <div className="drug-page-list">
+	  <strong>{title}</strong>
 	  <ul>
 		{listItems.map(item => <li>{item}</li>)}
 	  </ul>
