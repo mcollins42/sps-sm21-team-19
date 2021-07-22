@@ -13,7 +13,7 @@ const DrugPage = () => {
   }, []);
 
  const getDrugInfo = async (id) => {
-  const res = await fetch(`/list-drug-info?name=${id}`);
+  const res = await fetch(`/list-drug-info?id=${id}`);
   const jsonResponse = await res.json()
   setDrugInfo(jsonResponse);
  }
