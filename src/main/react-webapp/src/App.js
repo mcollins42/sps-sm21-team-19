@@ -9,12 +9,10 @@ function App() {
 
   return (
       <Router>
-          <Navbar/>
+        <Navbar/>
         <Route exact path="/" component={Home}/>
         <Route exact path="/drug/:id" component={DrugPage}/>
-        <Route path="/All-Drugs">
-            <AllDrugs/>
-        </Route>
+        <Route path="/all-drugs" component={AllDrugs}/>
       </Router>
   );
 }
