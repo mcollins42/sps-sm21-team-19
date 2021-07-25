@@ -28,7 +28,7 @@ const Searchbar = () => {
 
  let items = [];
  for(let drug of drugs){
-  items.push({id: drug.id, name: drug.name, aliases: drug.aliases});
+  items.push({id: drug.id, name: drug.name, aliases: drug.aliases.join(' ')});
  }
 
  return (
