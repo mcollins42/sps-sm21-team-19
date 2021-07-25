@@ -26,8 +26,11 @@ const Searchbar = () => {
   return item;
  }
 
+ let items = [];
+ for(let drug of drugs){
+  items.push({id: drug.id, name: drug.name, aliases: drug.aliases});
+ }
 
- let items = drugs.map(drug => items.push({id: drug["id"], name: drug["name"], aliases: drug["aliases"].join(' ')}))
 
 
  return (
