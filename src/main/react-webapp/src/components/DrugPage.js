@@ -24,8 +24,13 @@ const DrugPage = () => {
         <p><b>Classification:</b> {drugInfo["classification"]}</p>
         <DrugPageDesc title="Description" desc={drugInfo["description"]}/>
         <DrugPageList title="Aliases" listItems={drugInfo["aliases"]}/>
+        <DrugPageDesc title="Safety Description" desc={drugInfo["safetyDescription"]}/>
+        <DrugPageList title="Drug Warning Signs" listItems={drugInfo["drugWarningSigns"]}/>
+        <DrugPageDesc title="Description" desc={drugInfo["description"]}/>
         <DrugPageList title="Effects" listItems={drugInfo["effects"]}/>
         <DrugPageList title="Signs of Overdose" listItems={drugInfo["overdoseSigns"]}/>
+        <DrugPageList title="Locations where Legalized" listItems={drugInfo["legalLocations"]}/>
+        <DrugPageList title="Locations where Decriminalized" listItems={drugInfo["decriminalizedLocations"]}/>
        </div>
    )
 };
