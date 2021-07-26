@@ -26,15 +26,10 @@ const Searchbar = () => {
   return item;
  }
 
- let items = [];
- for(let drug of drugs){
-  items.push({id: drug.id, name: drug.name, aliases: drug.aliases});
- }
-
  return (
 	  <div className="search-bar-wrapper">
 		<ReactSearchAutocomplete
-			 items={items}
+			 items={drugs}
 			 fuseOptions={{keys: ["name", "aliases"]}}
 			 resultStringKeyName="name"
 			 onSelect={handleOnSelect}
