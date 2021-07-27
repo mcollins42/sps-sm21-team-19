@@ -22,7 +22,6 @@ const DrugPage = () => {
        <div className="drug-page">
         <h1>{drugInfo["name"]}</h1>
         <p><b>Classification:</b> {drugInfo["classification"]}</p>
-        <DrugPageDesc title="Description" desc={drugInfo["description"]}/>
         <DrugPageList title="Aliases" listItems={drugInfo["aliases"]}/>
         <DrugPageDesc title="Safety Description" desc={drugInfo["safetyDescription"]}/>
         <DrugPageList title="Drug Warning Signs" listItems={drugInfo["drugWarningSigns"]}/>

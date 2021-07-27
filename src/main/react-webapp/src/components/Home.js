@@ -14,9 +14,7 @@ const Home = () => {
         <div id="content">
             {/* Drop down emergancy menu */}
             
-            <button style="padding: 15px 32px;  text-align: center;  text-decoration: none;
-            display: inline-block;  font-size: 16px;  margin: 4px 2px;  cursor: pointer;
-            background-color: red; border: none;">
+            <button id="button">
                 <a href="/sps-sm21-team-19/src/main/webapp/question0.html" style="text-decoration: none; color: white;">
 				EMERGENCY</a>
             </button>
