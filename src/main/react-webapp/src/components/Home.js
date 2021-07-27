@@ -13,7 +13,12 @@ const Home = () => {
     return(
         <div id="content">
             {/* Drop down emergancy menu */}
-
+            
+            <button id="button">
+                <a href="/sps-sm21-team-19/src/main/webapp/question0.html" style="text-decoration: none; color: white;">
+				EMERGENCY</a>
+            </button>
+            
             <div className="container">
                 <h1 className="title">Drug Safety</h1>
                 {/* Search a drug  */}
