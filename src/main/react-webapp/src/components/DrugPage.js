@@ -10,7 +10,7 @@ const DrugPage = () => {
 
  useEffect(() => {
   getDrugInfo(id)
-  }, []);
+  }, [id]);
 
  const getDrugInfo = async (id) => {
   const res = await fetch(`/list-drug-info?id=${id}`);
